@@ -77,7 +77,7 @@ class LatentTSAE(TSAutoEncoder):
                 # print(feature_target.get_shape(), feature_output.get_shape())
                 if feature_size == 1:
                     # MAE
-                    self.reconstr_loss += tf.reshape(tf.sum(tf.abs(feature_output - feature_target), axis=1), [-1])
+                    self.reconstr_loss += tf.reshape(tf.reduce_sum(tf.abs(feature_output - feature_target), axis=1), [-1])
                 else:
                     # Categorical features
                     # softmax_cross_entropy_with_logits shape: [batch_size, num_steps]
